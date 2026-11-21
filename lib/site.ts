@@ -40,6 +40,7 @@ export const site = {
 export const nav = [
   { href: "#oferta", label: "Oferta" },
   { href: "#realizacje", label: "Realizacje" },
+  { href: "#opinie", label: "Opinie" },
   { href: "#obszar", label: "Obszar" },
   { href: "#faq", label: "FAQ" },
   { href: "#kontakt", label: "Kontakt" },

@@ -5,6 +5,7 @@ import { Area } from "@/components/home/area";
 import { Faq } from "@/components/home/faq";
 import { Hero } from "@/components/home/hero";
 import { Realizations } from "@/components/home/realizations";
+import { Reviews } from "@/components/home/reviews";
 import { Services } from "@/components/home/services";
 import { Steps } from "@/components/home/steps";
 import { pageMetadata, siteDescription, siteTitle } from "@/lib/seo";
@@ -34,6 +35,7 @@ export default async function HomePage({
       <Hero />
       <Services />
       <Realizations items={items} />
+      <Reviews />
       <Steps />
       <Area />
       <Faq />

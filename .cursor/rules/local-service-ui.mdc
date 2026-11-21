@@ -8,7 +8,7 @@ alwaysApply: false
 
 Tło białe lub bardzo jasnoszare, tekst ciemny. Akcent z logo: indygo–fiolet (`#4C1D95`–`#2563EB`) przechodzący w cyjan (`#38BDF8`). Układ własny WoWash.
 
-- Sekcje mają `id` z nawigacji: `oferta`, `realizacje`, `obszar`, `faq`, `kontakt`.
+- Sekcje mają `id` z nawigacji: `oferta`, `realizacje`, `opinie`, `obszar`, `faq`, `kontakt`.
 - Na telefonie widać od razu link `tel:` (przycisk w nagłówku albo dolny pasek, jak `MobileBar` i `SitePhoneCard`). Cel dotykowy co najmniej 44px.
 - Strona nie scrolluje się w bok. Na `html` użyj `overflow-x: clip`, bez `overflow-x` na `body`, żeby nie zepsuć `position: fixed`.
 - Jeden `h1`. Link i przycisk mają nazwę z treści („Zadzwoń”, „WhatsApp”), nie samą ikonę bez tekstu.

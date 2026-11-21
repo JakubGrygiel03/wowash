@@ -2,7 +2,7 @@ import { faq } from "@/lib/faq";
 
 export function Faq() {
   return (
-    <section id="faq" className="bg-white">
+    <section id="faq" className="bg-[#e8f1f8]">
       <div className="brand-line h-0.5" aria-hidden />
       <div className="mx-auto w-full max-w-6xl px-4 py-10 lg:px-6 lg:py-14">
         <p className="eyebrow">Pytania</p>

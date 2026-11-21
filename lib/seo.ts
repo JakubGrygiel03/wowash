@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { googleReviews, reviewsSummary } from "@/lib/reviews";
 import { site } from "@/lib/site";
 
 export const siteDescription =
@@ -68,5 +69,22 @@ export function localBusinessJsonLd() {
     hasMap: site.mapsLink,
     sameAs: [site.instagram, site.tiktok, site.facebookHref],
     description: site.about,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: reviewsSummary.ratingNumeric,
+      reviewCount: reviewsSummary.count,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    review: googleReviews.map((item) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: item.author },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: item.rating,
+        bestRating: 5,
+      },
+      reviewBody: item.text,
+    })),
   };
 }
