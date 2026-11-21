@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 
 import { localBusinessJsonLd, siteDescription, siteTitle, getSiteUrl } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -10,6 +10,13 @@ const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-plus-jakarta",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -41,12 +48,12 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffffff",
+  themeColor: "#f3f7fb",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pl" className={plusJakarta.variable}>
+    <html lang="pl" className={`${plusJakarta.variable} ${outfit.variable}`}>
       <body className={`${plusJakarta.className} min-h-full antialiased`}>
         <script
           type="application/ld+json"

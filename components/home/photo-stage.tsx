@@ -12,13 +12,13 @@ const INTERVAL_MS = 12000;
 export function PhotoStage({ frames }: { frames: readonly Frame[] }) {
   const visible = frames.slice(0, 8);
   const count = visible.length;
-  const [perPage, setPerPage] = useState(2);
+  const [perPage, setPerPage] = useState(1);
   const [start, setStart] = useState(0);
 
   useEffect(() => {
     const query = window.matchMedia("(min-width: 1024px)");
     function sync() {
-      const next = query.matches ? Math.min(4, count) : Math.min(2, count);
+      const next = query.matches ? Math.min(2, count) : Math.min(1, count);
       setPerPage(next || 1);
     }
     sync();
@@ -44,42 +44,44 @@ export function PhotoStage({ frames }: { frames: readonly Frame[] }) {
   const shown = Array.from({ length: Math.min(perPage, count) }, (_, offset) => visible[(start + offset) % count]!);
 
   return (
-    <div className="px-3 pt-3">
+    <div className="relative">
       <ul
-        className="grid gap-2 sm:gap-3"
+        className="grid gap-px bg-line/60"
         style={{ gridTemplateColumns: `repeat(${shown.length}, minmax(0, 1fr))` }}
       >
         {shown.map((frame) => (
-          <li key={frame.src} className="min-w-0 overflow-hidden rounded-2xl bg-[#eef3f8]">
+          <li key={frame.src} className="min-w-0 overflow-hidden bg-[#eef3f8]">
             <img
               src={frame.src}
               alt={frame.alt}
               width={800}
-              height={800}
+              height={600}
               draggable={false}
-              className="aspect-square w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+              className="aspect-[4/3] w-full object-cover"
             />
           </li>
         ))}
       </ul>
       {count > 1 ? (
-        <div className="mt-3 flex items-center justify-center gap-3">
+        <div className="absolute inset-x-0 bottom-3 flex items-center justify-center gap-2 px-3">
           <button
             type="button"
-            className="inline-flex min-h-11 items-center rounded-full border border-line bg-white px-4 text-sm font-semibold"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/92 text-sm font-semibold shadow-sm ring-1 ring-black/5"
+            aria-label="Poprzednie zdjęcie"
             onClick={() => go(-1)}
           >
-            Wstecz
+            ←
           </button>
-          <p className="min-w-12 text-center text-sm text-muted">
+          <p className="rounded-full bg-white/92 px-3 py-1 text-xs font-semibold text-muted shadow-sm ring-1 ring-black/5">
             {start + 1} / {count}
           </p>
           <button
             type="button"
-            className="inline-flex min-h-11 items-center rounded-full border border-line bg-white px-4 text-sm font-semibold"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/92 text-sm font-semibold shadow-sm ring-1 ring-black/5"
+            aria-label="Następne zdjęcie"
             onClick={() => go(1)}
           >
-            Dalej
+            →
           </button>
         </div>
       ) : null}

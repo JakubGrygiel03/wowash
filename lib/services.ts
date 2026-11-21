@@ -20,27 +20,27 @@ export const services: readonly Service[] = [
   {
     id: "kostka",
     title: "Mycie kostki brukowej",
-    summary: "Mycie ciśnieniowe kostki brukowej.",
+    summary: "Usuwamy brud, mech i osady z podjazdu oraz ścieżek.",
   },
   {
     id: "elewacja",
     title: "Mycie elewacji",
-    summary: "Zabrudzenia, zacieki i osady z powierzchni ścian.",
+    summary: "Zacieki, osady i zabrudzenia ze ścian budynku.",
   },
   {
     id: "taras",
     title: "Mycie tarasów",
-    summary: "Mycie ciśnieniowe tarasów.",
+    summary: "Odświeżamy powierzchnię tarasu przed sezonem.",
   },
   {
     id: "ogrodzenie",
     title: "Mycie ogrodzeń",
-    summary: "Mycie ciśnieniowe ogrodzeń.",
+    summary: "Czyścimy ogrodzenia z osadów i zielonego nalotu.",
   },
   {
     id: "malowanie",
     title: "Malowanie elewacji",
-    summary: "Malowanie elewacji, także razem z myciem.",
+    summary: "Malowanie po myciu albo osobno — według wyceny.",
   },
 ];
 

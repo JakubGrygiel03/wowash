@@ -47,30 +47,30 @@ export const nav = [
 
 export const quoteSteps = [
   {
-    title: "Napisz albo zadzwoń",
-    text: "Numer, WhatsApp i poczta są dostępne całą dobę. Wycena nic nie kosztuje.",
+    title: "Kontakt",
+    text: "Zadzwoń, napisz na WhatsApp albo wypełnij formularz.",
   },
   {
-    title: "Wyślij zdjęcia",
-    text: "Wystarczą zdjęcia kostki, elewacji, tarasu albo ogrodzenia. Na tej podstawie mówimy, co da się zrobić.",
+    title: "Zdjęcia powierzchni",
+    text: "Kostka, elewacja, taras albo ogrodzenie — to wystarczy do pierwszej oceny.",
   },
   {
-    title: "Ustalamy termin",
-    text: "Mycie ciśnieniowe i malowanie elewacji zależą od pogody. Gdy warunki się zmienią, przyjazd przekładamy.",
+    title: "Termin",
+    text: "Ustalamy go pod pogodę. Gdy warunki się zmienią, przyjazd przekładamy.",
   },
 ] as const;
 
 export const trustPoints = [
   {
     title: "Darmowa wycena",
-    text: "Napisz lub zadzwoń — wycena nic nie kosztuje.",
+    text: "Bez opłaty za sprawdzenie zakresu.",
   },
   {
     title: "Dojazd w okolicy",
-    text: "Konin + 50 km oraz całe województwo wielkopolskie.",
+    text: "Konin + 50 km i Wielkopolska.",
   },
   {
     title: "Wycena ze zdjęć",
-    text: "Wystarczą zdjęcia powierzchni, żeby powiedzieć, co da się zrobić.",
+    text: "Na start wystarczy kilka ujęć powierzchni.",
   },
 ] as const;

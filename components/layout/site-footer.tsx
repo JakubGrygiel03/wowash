@@ -1,63 +1,70 @@
 import { nav, site } from "@/lib/site";
 
 const socials = [
-  { href: site.instagram, label: "Instagram", icon: "instagram" },
-  { href: site.tiktok, label: "TikTok", icon: "tiktok" },
-  { href: site.facebookHref, label: "Facebook", icon: "facebook" },
-] as const;
+  { href: site.instagram, label: "Instagram", icon: "instagram" as const },
+  { href: site.tiktok, label: "TikTok", icon: "tiktok" as const },
+  { href: site.facebookHref, label: "Facebook", icon: "facebook" as const },
+];
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line bg-white">
-      <div className="brand-line h-1" />
-      <div className="mx-auto w-full max-w-6xl px-4 py-8">
-        <div className="flex items-center gap-3">
-          <img src="/logo-mark.png" alt="" width={498} height={386} className="h-11 w-auto" />
-          <div>
-            <p className="font-semibold leading-tight">{site.publicName}</p>
-            <p className="text-sm text-muted">
-              {site.city}, {site.postalCode}
-            </p>
+    <footer className="border-t border-line bg-[#f3f7fb]">
+      <div className="brand-line h-px" />
+      <div className="mx-auto w-full max-w-6xl px-4 py-8 lg:py-10">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="min-w-0">
+            <div className="flex items-center gap-3">
+              <img src="/logo-mark.png" alt="" width={498} height={386} className="h-9 w-auto" />
+              <div>
+                <p className="text-sm font-semibold leading-tight text-[#071428]">{site.name}</p>
+                <p className="text-xs text-muted">
+                  {site.city}, {site.postalCode}
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 space-y-1">
+              <a href={site.phoneHref} className="block text-lg font-extrabold tracking-tight text-[#071428]">
+                {site.phoneDisplay}
+              </a>
+              <a
+                href={`mailto:${site.email}`}
+                className="block break-all text-sm text-muted underline-offset-4 hover:text-[#071428] hover:underline"
+              >
+                {site.email}
+              </a>
+            </div>
+          </div>
+
+          <div className="min-w-0 lg:text-right">
+            <p className="text-xs font-bold tracking-[0.14em] text-[#2563eb] uppercase">Na stronie</p>
+            <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 lg:justify-end">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} className="inline-flex min-h-10 items-center text-sm font-semibold text-[#071428]">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-5 text-xs font-bold tracking-[0.14em] text-[#2563eb] uppercase">Social</p>
+            <ul className="mt-3 flex gap-2 lg:justify-end">
+              {socials.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className="social-link inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-[#071428]"
+                    aria-label={item.label}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <SocialIcon name={item.icon} />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        <div className="mt-4 flex flex-col gap-1 text-sm sm:flex-row sm:gap-6">
-          <a href={site.phoneHref} className="inline-flex min-h-11 items-center font-semibold">
-            {site.phoneDisplay}
-          </a>
-          <a href={`mailto:${site.email}`} className="inline-flex min-h-11 items-center break-all">
-            {site.email}
-          </a>
-        </div>
-
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {nav.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                className="inline-flex min-h-11 items-center rounded-full border border-line px-3 text-sm font-semibold"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <ul className="mt-4 grid grid-cols-3 gap-2">
-          {socials.map((item) => (
-            <li key={item.label}>
-              <a
-                href={item.href}
-                className="social-link inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-2xl border border-line px-2 text-sm font-semibold"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <SocialIcon name={item.icon} />
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
       </div>
     </footer>
   );

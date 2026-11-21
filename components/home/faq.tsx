@@ -2,11 +2,13 @@ import { faq } from "@/lib/faq";
 
 export function Faq() {
   return (
-    <section id="faq" className="bg-[#f4f7fb]">
+    <section id="faq" className="bg-white">
       <div className="brand-line h-0.5" aria-hidden />
       <div className="mx-auto w-full max-w-6xl px-4 py-10 lg:px-6 lg:py-14">
         <p className="eyebrow">Pytania</p>
-        <h2 className="mt-2 text-3xl font-extrabold tracking-tight lg:text-[2rem]">Zanim zadzwonisz</h2>
+        <h2 className="mt-2 text-[1.7rem] font-extrabold leading-tight tracking-tight lg:text-[2rem]">
+          Zanim zadzwonisz
+        </h2>
         <div className="card-shadow mt-8 overflow-hidden rounded-[1.75rem] border border-line bg-white">
           {faq.map((item) => (
             <details key={item.id} className="group border-b border-line last:border-b-0">
@@ -14,18 +16,18 @@ export function Faq() {
                 {item.question}
                 <span
                   aria-hidden
-                  className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface text-lg text-[#1e3a8a] group-open:hidden"
+                  className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eef4fa] text-lg text-[#1e3a8a] group-open:hidden"
                 >
                   +
                 </span>
                 <span
                   aria-hidden
-                  className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface text-lg text-[#1e3a8a] group-open:inline-flex"
+                  className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eef4fa] text-lg text-[#1e3a8a] group-open:inline-flex"
                 >
                   –
                 </span>
               </summary>
-              <p className="max-w-3xl px-5 pb-5 text-muted sm:px-7">{item.answer}</p>
+              <p className="max-w-3xl px-5 pb-5 text-sm leading-6 text-muted sm:px-7">{item.answer}</p>
             </details>
           ))}
         </div>

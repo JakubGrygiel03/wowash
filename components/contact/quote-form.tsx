@@ -78,7 +78,7 @@ export function QuoteForm({ initialService }: { initialService: ServiceId | "" }
       action={formAction}
       onSubmit={onSubmit}
       noValidate
-      className="card-shadow min-w-0 space-y-4 rounded-[1.75rem] border border-line bg-white p-5 sm:p-7"
+      className="min-w-0 space-y-4 rounded-[1.35rem] border border-white/80 bg-white/90 p-5 shadow-[0_18px_40px_-28px_rgba(7,20,40,0.4)] backdrop-blur-sm sm:p-7"
     >
       <div>
         <h3 className="text-xl font-semibold">Dane do wyceny</h3>
