@@ -52,6 +52,12 @@ body {
   }
 }
 
+@media (max-width: 380px) {
+  body {
+    padding-bottom: calc(5.75rem + env(safe-area-inset-bottom));
+  }
+}
+
 @media (min-width: 768px) {
   :root {
     --header-offset: 6.5rem;
@@ -101,6 +107,14 @@ h3 {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+@media (max-width: 380px) {
+  .brand-mark {
+    font-size: clamp(1.85rem, 8.5vw, 2.25rem);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
 }
 
 .card-shadow {

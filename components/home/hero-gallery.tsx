@@ -144,12 +144,12 @@ export function HeroGallery() {
           return (
             <span
               key={item.src}
-              className={`absolute inset-x-0 flex items-baseline justify-between gap-3 transition-opacity duration-500 ease-out ${
+              className={`absolute inset-x-0 flex min-w-0 items-baseline justify-between gap-3 transition-opacity duration-500 ease-out ${
                 ready && active ? "opacity-100" : "pointer-events-none opacity-0"
               }`}
             >
-              <span className="font-semibold text-[#071428]">{item.place}</span>
-              <span className="text-right text-muted">{item.caption}</span>
+              <span className="min-w-0 truncate font-semibold text-[#071428]">{item.place}</span>
+              <span className="min-w-0 shrink truncate text-right text-muted">{item.caption}</span>
             </span>
           );
         })}

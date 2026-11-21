@@ -10,14 +10,14 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-line/70 bg-white/90 backdrop-blur-md">
-      <div className="mx-auto flex h-12 w-full max-w-6xl items-center justify-between gap-3 px-4 lg:h-16">
+      <div className="mx-auto flex h-12 w-full max-w-6xl items-center justify-between gap-3 px-4 max-[380px]:px-[max(1rem,env(safe-area-inset-left))] max-[380px]:pr-[max(1rem,env(safe-area-inset-right))] lg:h-16">
         <Link href="/" className="inline-flex min-w-0 shrink items-center" aria-label="WoWash — strona główna">
           <img
             src="/logo-mark.png"
             alt=""
             width={498}
             height={386}
-            className="h-8 w-auto object-contain object-left lg:h-10"
+            className="h-8 w-auto object-contain object-left max-[380px]:max-w-[42vw] lg:h-10"
           />
         </Link>
 
