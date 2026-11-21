@@ -25,9 +25,7 @@ export function ReviewReel() {
   const [perPage, setPerPage] = useState(1);
   const [index, setIndex] = useState(0);
   const [cycle, setCycle] = useState(0);
-  const [hold, setHold] = useState(false);
   const [open, setOpen] = useState(false);
-  const [pointer, setPointer] = useState(false);
   const [reduced, setReduced] = useState(false);
   const prevHold = useRef(false);
   const pages = pagesOf(googleReviews, perPage);
@@ -53,22 +51,18 @@ export function ReviewReel() {
   }, []);
 
   useEffect(() => {
-    setHold(pointer || open);
-  }, [pointer, open]);
+    if (prevHold.current && !open) setCycle((current) => current + 1);
+    prevHold.current = open;
+  }, [open]);
 
   useEffect(() => {
-    if (prevHold.current && !hold) setCycle((current) => current + 1);
-    prevHold.current = hold;
-  }, [hold]);
-
-  useEffect(() => {
-    if (hold || reduced || pageCount < 2) return;
+    if (open || reduced || pageCount < 2) return;
     const timer = window.setTimeout(() => {
       setIndex((current) => (current + 1) % pageCount);
       setCycle((current) => current + 1);
     }, DWELL_MS);
     return () => window.clearTimeout(timer);
-  }, [cycle, hold, pageCount, reduced]);
+  }, [cycle, open, pageCount, reduced]);
 
   function closeOpen() {
     rootRef.current?.querySelectorAll("details[open]").forEach((node) => {
@@ -87,12 +81,6 @@ export function ReviewReel() {
     <div
       ref={rootRef}
       className="mt-5"
-      onPointerEnter={() => setPointer(true)}
-      onPointerLeave={() => setPointer(false)}
-      onFocusCapture={() => setPointer(true)}
-      onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setPointer(false);
-      }}
       onKeyDown={(event) => {
         if (event.key === "ArrowLeft") {
           event.preventDefault();
@@ -177,7 +165,7 @@ export function ReviewReel() {
       </div>
       {reduced || pageCount < 2 ? null : (
         <div className="mx-auto mt-3 h-1 w-full max-w-xl overflow-hidden rounded-full bg-[#e7eef6]">
-          <div key={cycle} className={hold ? "review-progress is-paused" : "review-progress"} />
+          <div key={cycle} className={open ? "review-progress is-paused" : "review-progress"} />
         </div>
       )}
       <p className="sr-only">
