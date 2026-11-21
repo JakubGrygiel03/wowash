@@ -104,42 +104,46 @@ export function ReviewReel() {
         }
       }}
     >
-      <div className="overflow-hidden">
+      <div className="review-clip min-w-0">
         <ul
-          className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+          className="flex w-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
           style={{ transform: `translate3d(-${index * 100}%, 0, 0)` }}
         >
           {pages.map((page, pageIndex) => (
-            <li key={page.map((review) => review.id).join("-")} className="w-full shrink-0">
-              <div className={`flex gap-3 ${page.length < perPage ? "justify-center" : ""}`}>
+            <li key={page.map((review) => review.id).join("-")} className="w-full min-w-full shrink-0 px-[1.35rem] pt-3 pb-[2.75rem]">
+              <div className={`flex items-stretch gap-4 ${page.length < perPage ? "justify-center" : ""}`}>
                 {page.map((review) => (
                   <div
                     key={review.id}
-                    className="min-w-0"
-                    style={{ width: `calc((100% - ${(perPage - 1) * 0.75}rem) / ${perPage})` }}
+                    className="flex min-w-0 flex-col"
+                    style={{ width: `calc((100% - ${(perPage - 1) * 1}rem) / ${perPage})` }}
                   >
                     <details
-                      className="group card-shadow h-full rounded-[1.35rem] border border-line bg-white"
+                      className="group card-shadow flex flex-1 flex-col overflow-hidden rounded-[1.35rem] border border-line bg-white"
                       onToggle={(event) => {
                         if (pageIndex === index) setOpen(event.currentTarget.open);
                       }}
                     >
-                      <summary className="cursor-pointer list-none px-5 py-5 [&::-webkit-details-marker]:hidden">
+                      <summary className="flex flex-1 cursor-pointer list-none flex-col px-5 py-5 lg:px-6 lg:py-6 [&::-webkit-details-marker]:hidden">
                         <p className="text-sm font-semibold tracking-[0.14em] text-[#f5b400]">
                           <span className="sr-only">Ocena {review.rating} na 5. </span>
                           <span aria-hidden>★★★★★</span>
                         </p>
-                        <p className="mt-2 line-clamp-3 text-sm leading-6 text-[#071428] group-open:line-clamp-none">
+                        <p className="mt-3 line-clamp-3 flex-1 text-sm leading-6 text-[#071428] group-open:line-clamp-none">
                           {review.text}
                         </p>
-                        <p className="mt-3 text-sm font-semibold">{review.author}</p>
-                        <p className="text-xs text-muted">Opinia w Google</p>
-                        <span className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-[#1e3a8a] group-open:hidden">
-                          Rozwiń
-                        </span>
-                        <span className="mt-2 hidden min-h-11 items-center text-sm font-semibold text-[#1e3a8a] group-open:inline-flex">
-                          Zwiń
-                        </span>
+                        <div className="mt-4 flex items-end justify-between gap-3 border-t border-line pt-3">
+                          <div className="min-w-0">
+                            <p className="text-sm font-semibold tracking-tight text-[#071428]">{review.author}</p>
+                            <p className="mt-0.5 text-xs text-muted">Opinia w Google</p>
+                          </div>
+                          <span className="shrink-0 text-sm font-semibold text-[#1e3a8a] group-open:hidden">
+                            Rozwiń
+                          </span>
+                          <span className="hidden shrink-0 text-sm font-semibold text-[#1e3a8a] group-open:inline">
+                            Zwiń
+                          </span>
+                        </div>
                       </summary>
                     </details>
                   </div>
@@ -150,7 +154,7 @@ export function ReviewReel() {
         </ul>
       </div>
 
-      <div className="mt-4 flex items-center justify-between gap-3">
+      <div className="mx-auto flex w-full max-w-xl items-center justify-between gap-3">
         <button
           type="button"
           className="inline-flex min-h-11 items-center gap-2 rounded-full border border-line bg-white px-4 text-sm font-semibold"
@@ -172,7 +176,7 @@ export function ReviewReel() {
         </button>
       </div>
       {reduced || pageCount < 2 ? null : (
-        <div className="mt-3 h-1 overflow-hidden rounded-full bg-[#d7e2ee]">
+        <div className="mx-auto mt-3 h-1 w-full max-w-xl overflow-hidden rounded-full bg-[#e7eef6]">
           <div key={cycle} className={hold ? "review-progress is-paused" : "review-progress"} />
         </div>
       )}

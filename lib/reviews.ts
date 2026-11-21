@@ -33,13 +33,13 @@ export const googleReviews = [
   },
   {
     id: "arleta",
-    author: "arleta olejnik",
+    author: "Arleta Olejnik",
     rating: 5,
     text: "Pełen profesjonalizm i świetne podejście do klienta. Usługa została wykonana terminowo i z dbałością o każdy detal. Z czystym sumieniem polecam!",
   },
   {
     id: "jakub",
-    author: "Jakub Wisniewski",
+    author: "Jakub Wiśniewski",
     rating: 5,
     text: "Jestem bardzo zadowolony z usługi mycia kostki brukowej na moim podwórku. Praca została wykonana dokładnie, sprawnie i z dużą starannością. Kostka po czyszczeniu wygląda jak nowa — zniknęły zabrudzenia, naloty i plamy, a całe podwórko odzyskało świeży i estetyczny wygląd. Widać profesjonalne podejście, dobry sprzęt i dbałość o szczegóły. Zdecydowanie polecam tę usługę każdemu, kto chce odświeżyć wygląd swojej posesji.",
   },

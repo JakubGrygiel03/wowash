@@ -19,7 +19,7 @@ export function Reviews() {
         <ReviewReel />
         <a
           href={reviewsSummary.href}
-          className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-[#1e3a8a] underline-offset-4 hover:underline"
+          className="mx-auto mt-4 flex min-h-11 w-fit items-center text-sm font-semibold text-[#1e3a8a] underline-offset-4 hover:underline"
           rel="noopener noreferrer"
           target="_blank"
         >

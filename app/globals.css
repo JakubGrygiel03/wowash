@@ -209,6 +209,33 @@ h3 {
   overflow: hidden;
 }
 
+/* Padding matches the mask so the card face stays solid and only the shadow fringe fades. */
+.review-clip {
+  --fade-x: 1.35rem;
+  --fade-y: 2.75rem;
+  overflow: hidden;
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 calc(100% - var(--fade-y)), transparent),
+    linear-gradient(
+      to right,
+      transparent,
+      #000 var(--fade-x),
+      #000 calc(100% - var(--fade-x)),
+      transparent
+    );
+  -webkit-mask-composite: destination-in;
+  mask-image:
+    linear-gradient(to bottom, #000 calc(100% - var(--fade-y)), transparent),
+    linear-gradient(
+      to right,
+      transparent,
+      #000 var(--fade-x),
+      #000 calc(100% - var(--fade-x)),
+      transparent
+    );
+  mask-composite: intersect;
+}
+
 /* Duration matches DWELL_MS in components/home/review-reel.tsx */
 @keyframes review-progress {
   from {
