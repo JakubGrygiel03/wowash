@@ -1,0 +1,24 @@
+---
+description: Business facts live in typed modules; placeholders stay obviously fake
+alwaysApply: true
+---
+
+# Treść publiczna
+
+W trzech stronach Jakuba wizytówka jest jednym modułem (`lib/site-contact.ts`, `lib/brand.ts` → `SALON`, `lib/constants.ts` → `SITE`), a listy są tablicami typów. Tu to samo: pliki TS, które Jakub edytuje z Bartoszem. Bez Sanity i bez panelu admina w tym podglądzie.
+
+- `lib/site.ts`: nazwa, `tel:+48518553391`, WhatsApp `https://wa.me/48518553391`, `wowashkontakt@gmail.com`, Instagram/TikTok/Facebook, miejscowości, baza „Konin, 62-500”.
+- Oferta, realizacje i FAQ: `lib/services.ts`, `lib/realizations.ts`, `lib/faq.ts`. Nowa karta = jeden obiekt w tablicy.
+- Zdjęcie = ścieżka w `public/`, wpisana w obiekcie. Źródłem jest plik lokalny, nie adres Facebooka ani Instagrama.
+- Adresu e-mail z briefu (`bartek_wozniak567@wp.pl`) nie ma na stronie.
+- Ulica, cena i usługa spoza briefu nie wchodzą do danych. Opcjonalne `priceLabel` zostaw puste i nie renderuj go.
+- Brak prawdziwego zdjęcia lub brak potwierdzonej realizacji: `placeholder: true` oraz widoczny napis „Zdjęcie do podmiany” albo „Przykładowy wpis do podmiany”.
+- Gosławice Konin (mycie i malowanie elewacji) to prawdziwy opis. Zdjęcia tego wpisu i tak są placeholderem, dopóki Bartosz nie poda plików.
+
+```ts
+// ❌ BAD
+{ title: "Mycie dachu", priceLabel: "od 15 zł/m²", place: "ul. Długa 1, Konin" }
+
+// ✅ GOOD
+{ title: "Mycie elewacji", place: "Gosławice, Konin", image: "/realizacje/placeholder.svg", placeholder: true }
+```

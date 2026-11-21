@@ -1,0 +1,26 @@
+---
+description: Quote form uses Zod and never claims photos were emailed
+globs: "**/*{form,quote}*.{ts,tsx}"
+alwaysApply: false
+---
+
+# Formularz wyceny
+
+Jak w GrygielGitara: schemat Zod w `lib/validations/`, komunikaty po polsku, akcja zwraca `{ ok, message, fieldErrors? }`.
+
+- Pola: imię, telefon, e-mail, miejscowość, rodzaj usługi, wiadomość, opcjonalne zdjęcia (wiele plików, tylko obrazy, limit rozmiaru).
+- Każde pole ma powiązany `<label>`. Błąd stoi przy polu.
+- Podgląd nie ma płatnej wysyłki. Poprawny tekst może pokazać sukces podglądu i link `mailto:wowashkontakt@gmail.com` z polami tekstowymi.
+- Pliki waliduj w przeglądarce. Napisz wprost, że na podglądzie zapis wysyłki zdjęć podepniemy przy publikacji.
+- Sukces nie mówi, że zdjęcia poszły mailem.
+
+```ts
+// ❌ BAD
+return { ok: true, message: "Zdjęcia wysłane na wowashkontakt@gmail.com." };
+
+// ✅ GOOD
+return {
+  ok: true,
+  message: "Podgląd zapisał treść wyceny. Zdjęcia dołączysz przy publikacji — teraz ich nie wysłaliśmy.",
+};
+```

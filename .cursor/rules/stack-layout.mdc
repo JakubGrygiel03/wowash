@@ -1,0 +1,32 @@
+---
+description: App Router, Tailwind 4 and folder layout from Jakub's three sites
+alwaysApply: true
+---
+
+# Stack i układ
+
+Jedna wizytówka na Vercel. Wzoruj układ na GrygielGitara, PaniFryzjerka i Trzy Wiatry, bez ich palet i bez panelu sklepu.
+
+- Next.js App Router, TypeScript `strict`, Tailwind 4 (`@import "tailwindcss"` i tokeny w `@theme`).
+- Alias `@/*`. `cn()` w `lib/utils.ts` (`clsx` + `tailwind-merge`).
+- Publiczny shell: `app/(public)/layout.tsx` (header, `<main>`, footer) oraz `app/(public)/page.tsx`.
+- `page.tsx` zostaje Server Componentem i tylko składa sekcje. `"use client"` tylko w menu, akordeonie i formularzu.
+- Komponenty kebab-case, jeden widok na plik: `components/home/hero.tsx`, `components/layout/site-header.tsx`.
+- `app/layout.tsx`: `<html lang="pl">`, `metadataBase`, title, description, Open Graph `locale: "pl_PL"` i logo z `public/`. Jeden `h1`.
+- JSON-LD bez ulicy. Locality: Konin, kod: 62-500.
+- Komentarz po angielsku tylko przy nieoczywistej logice. Tekst na stronie po polsku.
+- Kolory z logo WoWash. Palet PaniFryzjerka, Trzy Wiatry i GrygielGitara tu nie używaj.
+
+```tsx
+// ❌ BAD
+"use client";
+export default function Page() {
+  return <a href="tel:518553391">Zadzwoń</a>;
+}
+
+// ✅ GOOD
+import { Hero } from "@/components/home/hero";
+export default function HomePage() {
+  return <Hero />;
+}
+```

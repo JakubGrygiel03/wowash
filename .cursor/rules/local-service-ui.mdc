@@ -1,0 +1,28 @@
+---
+description: Calm mobile-first one-pager with an obvious phone button
+globs: "**/*.tsx"
+alwaysApply: false
+---
+
+# Wygląd wizytówki lokalnej
+
+Tło białe lub bardzo jasnoszare, tekst ciemny. Akcent z logo: indygo–fiolet (`#4C1D95`–`#2563EB`) przechodzący w cyjan (`#38BDF8`). Układ własny WoWash.
+
+- Sekcje mają `id` z nawigacji: `oferta`, `realizacje`, `obszar`, `faq`, `kontakt`.
+- Na telefonie widać od razu link `tel:` (przycisk w nagłówku albo dolny pasek, jak `MobileBar` i `SitePhoneCard`). Cel dotykowy co najmniej 44px.
+- Strona nie scrolluje się w bok. Na `html` użyj `overflow-x: clip`, bez `overflow-x` na `body`, żeby nie zepsuć `position: fixed`.
+- Jeden `h1`. Link i przycisk mają nazwę z treści („Zadzwoń”, „WhatsApp”), nie samą ikonę bez tekstu.
+- Widoczny `:focus-visible`. Tekst na bieli czytelny.
+- Stopka: WoWash, Konin, telefon, e-mail, linki social.
+- „Czynne całą dobę” oznacza, że można zadzwonić i napisać. To dostępność kontaktu.
+- Mapa prowadzi do Konina (link albo embed miasta) plus lista miejscowości z briefu.
+
+```tsx
+// ❌ BAD
+<div onClick={call}>📞</div>
+
+// ✅ GOOD
+<a href={site.phoneHref} className="inline-flex min-h-11 items-center px-4">
+  Zadzwoń {site.phoneDisplay}
+</a>
+```

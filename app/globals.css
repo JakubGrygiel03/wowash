@@ -1,0 +1,384 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --foreground: #0f172a;
+  --muted: #334155;
+  --line: #e2e8f0;
+  --accent: #2563eb;
+  --accent-deep: #4c1d95;
+  --accent-bright: #38bdf8;
+  --header-offset: 3.25rem;
+  --shadow-card: 0 18px 50px -28px rgba(15, 23, 42, 0.45);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-bright: var(--accent-bright);
+  --font-sans: var(--font-plus-jakarta), system-ui, sans-serif;
+  --font-display: var(--font-plus-jakarta), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  scroll-padding-top: var(--header-offset);
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  line-height: 1.6;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(5.25rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-offset: 6.5rem;
+  }
+}
+
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #dbeafe;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #4c1d95;
+}
+
+.card-shadow {
+  box-shadow: var(--shadow-card);
+}
+
+.brand-line {
+  background-image: linear-gradient(90deg, #4c1d95, #2563eb, #38bdf8, #2563eb, #4c1d95);
+  background-size: 200% 100%;
+}
+
+.compare-wipe {
+  position: absolute;
+  inset: 0 0 0 50%;
+  background: #f8fafc;
+  transform-origin: left center;
+}
+
+.compare-label {
+  position: absolute;
+  bottom: 0.85rem;
+  z-index: 1;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0f172a;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes wipe-after {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ticker {
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  margin: 0;
+}
+
+.ticker-item {
+  padding: 0.45rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.ticker-item::before {
+  content: "·";
+  margin-right: 1.25rem;
+  color: #2563eb;
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes bar-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes line-shift {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .rise-2 {
+    animation-delay: 0.12s;
+  }
+
+  .rise-3 {
+    animation-delay: 0.24s;
+  }
+
+  .rise-4 {
+    animation-delay: 0.4s;
+  }
+
+  .card-lift {
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s ease;
+  }
+
+  .card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 50px -26px rgba(37, 99, 235, 0.45);
+  }
+
+  .card-lift:hover > img {
+    transform: scale(1.035);
+  }
+
+  .card-lift > img {
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-glow {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .btn-glow:hover {
+    transform: translateY(-1px);
+  }
+
+  .hero-photo {
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+
+  .compare-wipe {
+    animation: wipe-after 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+  }
+
+  .compare-label {
+    animation: rise 0.5s ease 1.05s both;
+  }
+
+  .menu-panel {
+    animation: menu-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .brand-line {
+    animation: line-shift 10s linear infinite;
+  }
+
+  .ticker-track {
+    animation: ticker 28s linear infinite;
+  }
+
+  .mobile-bar {
+    animation: bar-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .menu-panel a {
+    animation: rise 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .menu-panel a:nth-child(2) {
+    animation-delay: 0.04s;
+  }
+
+  .menu-panel a:nth-child(3) {
+    animation-delay: 0.08s;
+  }
+
+  .menu-panel a:nth-child(4) {
+    animation-delay: 0.12s;
+  }
+
+  .menu-panel a:nth-child(5) {
+    animation-delay: 0.16s;
+  }
+
+  .social-link {
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .social-link:hover {
+    transform: translateY(-2px);
+    border-color: #2563eb;
+  }
+
+  details[open] > p {
+    animation: rise 0.35s ease both;
+  }
+}
+
+.stage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  max-width: 36rem;
+  margin-inline: auto;
+  overflow: hidden;
+  background: #eef3f8;
+}
+
+.stage-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+
+.stage-slide.is-active {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage-slide {
+    transition: opacity 0.6s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .compare-wipe {
+    display: none;
+  }
+
+  .stage-slide {
+    transition: none;
+  }
+
+  .ticker-track,
+  .mobile-bar,
+  .menu-panel a,
+  .social-link,
+  .hero-photo {
+    animation: none;
+  }
+
+  .ticker {
+    display: none !important;
+  }
+
+  .ticker-fallback {
+    display: block !important;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 60;
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
